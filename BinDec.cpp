@@ -1,6 +1,7 @@
 #include<iostream>
 #include<conio.h>
 #include<vector>
+#include<math.h>
 using namespace std;
 
 
@@ -15,7 +16,16 @@ void DecToBin(int dec){
         cout<<x[i];
     }
 }
+void BinToDec(int bin){
+    int i=0,x=0;
+    while(bin>0){
+        x+=bin%10*pow(2,i);
+        bin/=10;
+        i++;
+    }
+cout<<x;
 
+}
 
 
 int main(){
@@ -41,7 +51,9 @@ while(true){
             cout<<"Bin to Dec"<<endl;
             cout<<"Enter number: ";
             cin>>numb;
-            cout<<numb<<"->"<<endl;
+            cout<<numb<<"->";
+            BinToDec(numb);
+            cout<<endl;
             cout<<"Press any key";
             reset=getch();
             system("CLS");
