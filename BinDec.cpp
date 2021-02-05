@@ -26,19 +26,31 @@ void BinToDec(int bin){
 cout<<x;
 
 }
-
+bool CheckBin(int bin){
+while(bin){
+    if((bin%10)>1)
+        return false;
+    bin/=10;
+}
+return true;
+}
 
 int main(){
 int choose,numb,reset;
-
+bool cond;
 while(true){
     cout<<"1.Decimal to Binary"<<endl<<"2.Binary to Decimal"<<endl<<"3.Exit"<<endl;
     choose = getch();
     switch(choose){
         case 49:
             cout<<"Dec to Bin"<<endl;
-            cout<<"Enter number: ";
-            cin>>numb;
+            do{
+                cout<<"Enter number: ";
+                cin>>numb;
+                cond = cin.fail();
+                cin.clear();
+                cin.ignore(INT_MAX,'\n');
+            }while(cond);
             cout<<numb<<"->";
             DecToBin(numb);
             cout<<endl;
@@ -49,8 +61,15 @@ while(true){
 
         case 50:
             cout<<"Bin to Dec"<<endl;
-            cout<<"Enter number: ";
-            cin>>numb;
+            do{
+                    do{
+                    cout<<"Enter number: ";
+                    cin>>numb;
+                    cond = cin.fail();
+                    cin.clear();
+                    cin.ignore(INT_MAX,'\n');
+                    }while(cond);
+            }while(CheckBin(numb)==false);
             cout<<numb<<"->";
             BinToDec(numb);
             cout<<endl;
